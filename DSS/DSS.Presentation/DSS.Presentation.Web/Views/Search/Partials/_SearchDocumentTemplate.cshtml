@@ -1,0 +1,46 @@
+﻿
+<script type="text/template" id="documentTemplate">
+    <div class="row-fluid">
+        <div class="isotope-item document">
+
+            <div class="document-name" data-bind="text: Title">
+            </div>
+
+            <div class="author-wrapper">
+
+                <div class="author-label">Author: </div>
+
+                <div class="author-name" data-bind="text: AuthorName">
+                </div>
+
+            </div>
+
+            <div class="categories-wrapper tag-wrapper">
+                <div data-bind="foreach: Categories">
+                    <div class="category tag" data-bind="text: $data, click: $root.documentCategoryClick"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="tag-wrapper keywords-wrapper">
+                <div data-bind="foreach: Keywords">
+                    <div class="keyword tag" data-bind="text: $data, click: $root.documentKeywordClick"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="actions">
+                <a data-bind="attr: { href: '/Documents/Details/' + Id }" class="details-document-button btn btn-success btn-small">
+                    <i class="icon-white icon-eye-open"></i>
+                    Details
+                </a>
+
+                <a data-bind="click: $root.downloadDocument, attr: { href: '/FileDownload/DownloadFile/' + Id }" class="btn btn-primary download-file-link btn-small">
+                    <i class="icon-download icon-white"></i>
+                    Download!
+                </a>
+
+            </div>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Documents Dashboard";
+}
+
+<div id="documents-index-wrapper">
+    <div class="container">
+        <div class="row">
+            <div id="IndexDashboar" class="well well-small">
+
+                <button id="refreshDashboardStats" data-bind="click:DashboardRefreshButtonHandler" class="btn">
+                    <i class="icon-refresh"></i>
+                </button>
+
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="page-header">
+                            <h1>Documents Dashboard <small>Lucene Indexing</small></h1>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <div class="dashboard-widget" title="The number of documents currently added to the lucene index.">
+                                <div class="dashboard-label">Documents in index</div>
+                                <div class="dashboard-value" data-bind="text:DocumentsInIndex"></div>
+
+                            </div>
+                        </div>
+
+                        <div class="span3">
+                            <div class="dashboard-widget" title="The number of documents currently searchable by users. Should equal the documents in index number">
+                                <div class="dashboard-label">Searchable Documents</div>
+                                <div class="dashboard-value" data-bind="text:SearchableDocuments"></div>
+                            </div>
+                        </div>
+
+                        <div class="span3">
+                            <div class="dashboard-widget" title="Total Uploaded documents, inlcuding searchable and non searchable documents">
+                                <div class="dashboard-label">Total Uploaded Documents</div>
+                                <div class="dashboard-value" data-bind="text:TotalUploadedDocuments"></div>
+                            </div>
+                        </div>
+
+                        <div class="span3">
+                            <div class="dashboard-widget" title="Indicator on the lucene index optimization state.">
+                                <div class="dashboard-label">Is Index Optimized</div>
+                                <div class="dashboard-value" data-bind="text:IsIndexOptimized"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="document-filters" class="well-small well">
+                <div class="container-fluid">
+
+                    <div class="row-fluid">
+                        <h3>Document Filters</h3>
+                    </div>
+
+                    @Html.Action("DocumentDashboardFilters", "DocumentsDashboard")
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="pull-right">
+                                <button class="btn btn-primary" data-bind="click:ApplyDocumentsFilter">Apply Filter</button>
+                                <button class="btn" data-bind="click:ClearDocumentsFilter">Clear Filter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                @Html.Partial("DocumentDataTable")
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            DSS.layout.SetMenuItemActive("Link_DocumentsAdministration");
+
+            // setup and initialize the view model.
+            var documentIndexViewModel = DSS.Ko.ViewModels.Action.DocumentIndexViewModel;
+
+            ko.applyBindings(documentIndexViewModel, document.getElementById("documents-index-wrapper"));
+
+            documentIndexViewModel.Initialize();
+        });
+    </script>
+}

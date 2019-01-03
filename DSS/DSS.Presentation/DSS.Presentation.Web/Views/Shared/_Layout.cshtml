@@ -1,0 +1,112 @@
+﻿@using StackExchange.Profiling
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Document Search System" />
+    
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/common/css")
+    @Styles.Render("~/Content/fontawesome/css")
+    @Styles.Render("~/Content/themes/humanity/css")
+    @Styles.Render("~/Content/less/less")
+    @Styles.Render("~/bundle/Content/DataTables-1.9.4")
+
+    @RenderSection("header", false)
+
+
+</head>
+<body>
+    <div id="header">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a href="#" class="brand">DSS</a>
+                    <div class="collapse nav-collapse">
+                        <ul class="nav" id="main-top-menu">
+                            <li>
+                                <a id="Link_FileUpload" href="@Url.Action("Index", "FileUpload")">
+                                    <i class="icon-white icon-upload"></i>
+                                    File Uploads
+                                </a>
+                            </li>
+                            <li>
+                                <a id="Link_Search" href="@Url.Action("Index", "Search")">
+                                    <i class="icon-white icon-search"></i>
+                                    Document Search
+                                </a>
+                            </li>
+                            @if (User.IsInRole("administrator"))
+                            {
+                                <li>
+                                    <a id="Link_DocumentsAdministration" href="@Url.Action("Index", "DocumentsDashboard")">
+                                        <i class="icon-white icon-book"></i>
+                                        Documents Dashboard
+                                    </a>
+                                </li>
+                            }
+                            <li>
+                                <a id="Link_UserAdministration" href="@Url.Action("Index", "DocumentsDashboard")">
+                                    <i class="icon-white icon-user"></i>
+                                    Users Dashboard
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="navbar-form pull-right">
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+
+                                <a href="@Url.Action("Login", "Account")" class="btn btn-success">Sign in</a>
+
+                            }
+                            else
+                            {
+
+                                @Html.Action("LoggedUser", "Account")
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content" class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundle/Scripts/js"
+                    , "~/bundle/Scripts/DataTables-1.9.4"
+                    , "~/bundle/myjavascript"
+            // Render tools after rendering my javascript containing the namespacing functionality
+                    , "~/bundle/jsTools"
+                    , "~/bundle/bootstrapjs"
+                    , "~/bundle/koBasicViewModels"
+                    , "~/Scripts/DataQuery"
+                    )
+
+    @MiniProfiler.RenderIncludes()
+
+    <script type="text/javascript">
+        $(function () {
+            // Extend the data tables functionality to be compatible with boostrap
+            DSS.query.tables.common.ExtendDataTables();
+
+            // Init the main script which can then intialize our custom modules
+            DSS.Init.Main.Initialize();
+        });
+    </script>
+
+    @RenderSection("scripts", false)
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "File Upload";
+}
+
+<div id="file-upload-wrapper">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="page-header">
+                <h1>File Upload <small>Add Documents to upload</small></h1>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="span8">
+
+                @using (Html.BeginForm("Index", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="submit" class="hidden-input" id="hidden-file-upload-submit" />
+
+                    <div class="file-upload-start-message" data-bind="visible: Documents().length == 0">
+                        <blockquote>
+                            <i class="icon-inbox"></i>
+                            Click the Add Document Button to start uploading documents
+                        </blockquote>
+                    </div>
+
+                    <div id="documents" data-bind="foreach:{data:Documents, afterRender: handleAfterRender}">
+
+                        @Html.Partial("_UploadDocumentPartial")
+
+                    </div>
+                }
+            </div>
+
+            <div class="span4">
+
+                <div id="fixedFileUploadActions">
+                    <div id="file-upload-stats">
+                        Number of Documents: <span data-bind="text:Documents().length"></span>
+                    </div>
+
+                    <div id="file-upload-actions">
+                        <button data-bind="click:AddDocument" class="btn btn-primary btn-mini">
+                            <i class="icon-plus icon-white"></i>
+                            Add Document
+                        </button>
+
+                        <button id="start-upload" class="btn btn-warning btn-mini" data-bind="click:checkFileIntegrityAndUpload">
+                            <i class="icon-upload icon-white"></i>
+                            Start Upload
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+
+            DSS.layout.SetMenuItemActive("Link_FileUpload");
+
+            // apply the file upload view model
+            var fileUploadViewModel = DSS.Ko.ViewModels.Action.FileUploadViewModel;
+            fileUploadViewModel.init();
+            ko.applyBindings(fileUploadViewModel, document.getElementById("file-upload-wrapper"));
+        });
+    </script>
+}

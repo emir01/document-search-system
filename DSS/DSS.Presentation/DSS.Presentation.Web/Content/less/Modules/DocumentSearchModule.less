@@ -1,0 +1,112 @@
+// Wrapper around the documents panel wrapper
+// on the document search page
+#documents-panel {
+	padding-bottom:20px;
+}
+
+#document-list{
+	padding:5px;
+	overflow:hidden;
+}
+
+// the document general item and internal styles
+.document
+{
+    border: 1px solid #CCC;
+    position: relative;
+    padding: 10px;
+    background-color: #f8f8f8;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+    .document-name
+    {
+        font-size: 18px;
+        color: #0685af;
+        padding: 3px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #CCC;
+        margin-bottom: 10px;
+    }
+
+    .author-wrapper
+    {
+        margin-left: 10px;
+
+        .author-label
+        {
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .author-name
+        {
+            display: inline-block;
+            font-size: 12px;
+            color: #E06D1F;
+            padding: 3px;
+        }
+    }
+    // The tag is used for the document information items: Categories and Keywords
+    .tag-wrapper
+    {
+        margin-left: 10px;
+    }
+
+    .tag
+    {
+        float: left;
+        margin: 5px;
+        padding: 3px;
+        border: 1px solid #CCC;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        background-color: #ededed;
+
+        &:hover
+        {
+            cursor: pointer;
+            background-color: #eaeaea;
+        }
+
+        &:first-child
+        {
+            margin-left: -3px;
+        }
+    }
+
+    .categories-wrapper
+    {
+        .category
+        {
+            color: #55A9F2;
+        }
+    }
+
+    .keywords-wrapper
+    {
+        .keyword
+        {
+            color: #4C9639;
+        }
+    }
+
+    .actions {
+    	width:250px;
+
+        display:block;
+        margin-top:10px;
+        margin-left:10px;
+
+        padding-top:10px;
+
+        border-top:1px solid #EEE;
+
+        .details-document-button
+        {
+            
+        }
+    }
+}

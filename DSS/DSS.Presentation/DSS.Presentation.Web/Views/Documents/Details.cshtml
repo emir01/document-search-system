@@ -1,0 +1,39 @@
+﻿@*The main document details view*@
+
+@model DSS.Common.ViewModels.Documents.DocumentDetailsRenderOptions
+
+@{
+    ViewBag.Title = "Document Details";
+}
+
+<div class="container">
+    
+    <div class="row-fluid">
+        <div class="span5 pull-left">
+            <button class="btn">
+                <i class="icon icon-search"></i>
+                @Html.ActionLink("Last Search", "Index", "Search")
+            </button>
+        </div>
+    </div>
+
+    <div id="document-detail-wrapper">
+        @Html.Action("DetailsPartialView", new { id = Model.DocumentId, renderingOptions = Model })
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            DSS.layout.SetMenuItemActive("Link_Search");
+
+            // apply the file upload view model
+            var documentDetailsViewModel = DSS.Ko.ViewModels.Action.DocumentDetailsViewModel;
+            documentDetailsViewModel.init();
+            ko.applyBindings(documentDetailsViewModel, document.getElementById("document-detail-wrapper"));
+        });
+    </script>
+
+}

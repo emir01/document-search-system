@@ -1,0 +1,46 @@
+﻿<div class="file-upload-control-wrapper">
+
+    <div class="single-document-title">
+        <h2 data-bind="text:tmpTitle"></h2>
+    </div>
+
+    <div class="single-document-form">
+
+        <input type="file" class="fancy-files" name="files" data-bind="event:{change:$root.newDocumentSetInUpload}" />
+
+        <button class="btn remove-document-button btn-danger btn-mini" data-bind="click:$parent.RemoveDocument">
+            <i class="icon-white  icon-remove"></i>
+        </button>
+
+        <input class="document-key" type="hidden" />
+
+        <label>
+            Document Name:
+        </label>
+
+        <input type="text" class="document-input document-title" data-bind="value:title, onChangeUpdateModelProperty:'tmpTitle', defaultChangeUpdateValue:'Document Name'" placeholder="Document Name" />
+
+        <label>
+            Document Author:
+        </label>
+        <input type="text" class="document-input document-author" data-bind="value:authorName" placeholder="Author Name" />
+
+        <label>
+            Document Categories:
+        </label>
+
+        <select data-placeholder="Document Categories"
+                data-bind="simpleSelect2Binding:{data:$root.AvailableCategories, selected:categories, selectedText:'Name'}, optionsValue:'Id', optionsText:'Name'"
+                size="5"
+                multiple="multiple"
+                class="document-categories"></select>
+
+        <label>
+            Document Keywords List:
+        </label>
+
+        <input data-bind="simpleTagEdit:$root.AvailableKeywords,tagEditLabelField:'Name',tagEditValueField:'Id'" type="text" class="document-input document-keywords" placeholder="Document Keywords" />
+
+    </div>
+
+</div>

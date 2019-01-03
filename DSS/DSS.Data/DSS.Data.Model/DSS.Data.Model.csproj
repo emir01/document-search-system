@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F05280DA-FF8D-4016-96FD-39235831350F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DSS.Data.Model</RootNamespace>
+    <AssemblyName>DSS.Data.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\DSContext.cs" />
+    <Compile Include="DataSeeders\CategorySeeder.cs" />
+    <Compile Include="DataSeeders\FeatureTierSeeder.cs" />
+    <Compile Include="DataSeeders\KeywordSeeder.cs" />
+    <Compile Include="Entities\BaseEntitiy.cs" />
+    <Compile Include="Entities\Document.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\DownloadLog.cs" />
+    <Compile Include="Entities\DownvoteLog.cs" />
+    <Compile Include="Entities\Keyword.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\UpvoteLog.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserFeatureTier.cs" />
+    <Compile Include="Migrations\201209151244025_InitialDatabaseCreation.cs" />
+    <Compile Include="Migrations\201209151244025_InitialDatabaseCreation.Designer.cs">
+      <DependentUpon>201209151244025_InitialDatabaseCreation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201209151857366_AddAuthorAndColabsToDocument.cs" />
+    <Compile Include="Migrations\201209151857366_AddAuthorAndColabsToDocument.Designer.cs">
+      <DependentUpon>201209151857366_AddAuthorAndColabsToDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201209231030436_ConfigureManyToManyKeywordsCategories.cs" />
+    <Compile Include="Migrations\201209231030436_ConfigureManyToManyKeywordsCategories.Designer.cs">
+      <DependentUpon>201209231030436_ConfigureManyToManyKeywordsCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302161751054_CreateRelationBetweenUsersAndDocs.cs" />
+    <Compile Include="Migrations\201302161751054_CreateRelationBetweenUsersAndDocs.Designer.cs">
+      <DependentUpon>201302161751054_CreateRelationBetweenUsersAndDocs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303312232092_DocumentDescriptionAndFKChanges.cs" />
+    <Compile Include="Migrations\201303312232092_DocumentDescriptionAndFKChanges.Designer.cs">
+      <DependentUpon>201303312232092_DocumentDescriptionAndFKChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303312332552_AddDownloadAndVotingLogs.cs" />
+    <Compile Include="Migrations\201303312332552_AddDownloadAndVotingLogs.Designer.cs">
+      <DependentUpon>201303312332552_AddDownloadAndVotingLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304010034069_MakeLogFKsNonNull.cs" />
+    <Compile Include="Migrations\201304010034069_MakeLogFKsNonNull.Designer.cs">
+      <DependentUpon>201304010034069_MakeLogFKsNonNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304022002368_RolesAndUserFeatureTiers.cs" />
+    <Compile Include="Migrations\201304022002368_RolesAndUserFeatureTiers.Designer.cs">
+      <DependentUpon>201304022002368_RolesAndUserFeatureTiers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201304022239260_RelationChanges_UserRoles.cs" />
+    <Compile Include="Migrations\201304022239260_RelationChanges_UserRoles.Designer.cs">
+      <DependentUpon>201304022239260_RelationChanges_UserRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310302153323_KeywordCategoryDocumentMappings.cs" />
+    <Compile Include="Migrations\201310302153323_KeywordCategoryDocumentMappings.Designer.cs">
+      <DependentUpon>201310302153323_KeywordCategoryDocumentMappings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="SeedDataObjects\SeededRoleAliases.cs" />
+    <Compile Include="SeedDataObjects\SeededTierAliases.cs" />
+    <Compile Include="SeedDataObjects\SeededUsernames.cs" />
+    <Compile Include="DataSeeders\DocumentSeeder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataSeeders\RoleSeeder.cs" />
+    <Compile Include="DataSeeders\UserSeeder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201209151244025_InitialDatabaseCreation.resx">
+      <DependentUpon>201209151244025_InitialDatabaseCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201209151857366_AddAuthorAndColabsToDocument.resx">
+      <DependentUpon>201209151857366_AddAuthorAndColabsToDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201209231030436_ConfigureManyToManyKeywordsCategories.resx">
+      <DependentUpon>201209231030436_ConfigureManyToManyKeywordsCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302161751054_CreateRelationBetweenUsersAndDocs.resx">
+      <DependentUpon>201302161751054_CreateRelationBetweenUsersAndDocs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303312232092_DocumentDescriptionAndFKChanges.resx">
+      <DependentUpon>201303312232092_DocumentDescriptionAndFKChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303312332552_AddDownloadAndVotingLogs.resx">
+      <DependentUpon>201303312332552_AddDownloadAndVotingLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304010034069_MakeLogFKsNonNull.resx">
+      <DependentUpon>201304010034069_MakeLogFKsNonNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304022002368_RolesAndUserFeatureTiers.resx">
+      <DependentUpon>201304022002368_RolesAndUserFeatureTiers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201304022239260_RelationChanges_UserRoles.resx">
+      <DependentUpon>201304022239260_RelationChanges_UserRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310302153323_KeywordCategoryDocumentMappings.resx">
+      <DependentUpon>201310302153323_KeywordCategoryDocumentMappings.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DSS.Common\DSS.Common.Infrastructure\DSS.Common.Infrastructure.csproj">
+      <Project>{88919D0D-F69F-4C74-B521-48431964B54D}</Project>
+      <Name>DSS.Common.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

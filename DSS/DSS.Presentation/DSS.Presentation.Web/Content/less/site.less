@@ -1,0 +1,115 @@
+@import "Modules/DocumentSearchModule.less";
+
+@import "Modules/FileUploadModule.less";
+
+@import "Modules/DocumentIndexModule.less";
+
+@import "Modules/IsotopeModule.less";
+
+@import "Modules/IsotopeDashboardModule.less";
+
+@import "Modules/DocumentDetailsModule.less";
+
+@import "Modules/Utils.less";
+
+// The main Site Less File.
+body,html{
+	height:100%;
+	width:100%;
+}
+
+#header{
+	
+}
+
+#content{
+	padding-top:60px;
+}
+
+// General classes related to the entire application
+.actions-panel{
+	margin-top:5px;
+	margin-bottom:10px;
+	padding-bottom:5px;
+
+	border-bottom:1px solid #CCC;
+}
+
+.data-tables-button{
+	margin-left:5px;
+	margin-right:5px;
+}
+
+#main-top-menu{
+	i{
+		&.icon-white{
+			margin-top:3px;
+		}
+
+		&.icon{
+			margin-top:3px;
+		}
+	}
+}
+
+// fix for the bootstrap icon issue under anchor elements
+a{
+	i{
+		margin-top:2px;	
+	}
+}
+
+// Login classess
+
+.form-login {
+
+	background-color: #F8F8F8;
+
+	max-width: 300px;
+	
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	
+	border: 1px solid #e5e5e5;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+	box-shadow: 0 1px 2px rgba(0,0,0,.05);
+
+	h2{
+		margin-bottom:15px;
+	}
+
+	input.input-block-level{
+		font-size: 16px;
+		height: auto;
+		margin-bottom: 15px;
+		padding: 7px 9px;
+	}
+
+	.control-label{
+		margin-bottom:15px;
+	}
+
+	.login-validation-errors{
+		margin-top:15px;
+		padding:10px;
+		border-top:1px solid #CCC;
+
+		color:#bb2727;
+
+		.validation-summary-errors{
+			ul{
+
+			}
+
+			li{
+				margin-bottom:10px;
+			}
+		}
+	}
+}

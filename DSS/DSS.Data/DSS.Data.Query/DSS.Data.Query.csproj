@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F342069D-AF5A-45EE-AC71-9A62E2BE289E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DSS.Data.Query</RootNamespace>
+    <AssemblyName>DSS.Data.Query</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\..\packages\System.Linq.Dynamic.1.0.0\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomBinders\FilterNodeBinder.cs" />
+    <Compile Include="DataTables\JQueryDataTableParams.cs" />
+    <Compile Include="DataTables\JQueryDataTableResult.cs" />
+    <Compile Include="Enums\FilterCaseSensitivity.cs" />
+    <Compile Include="Enums\FilterDataType.cs" />
+    <Compile Include="Enums\FilterOperationType.cs" />
+    <Compile Include="Enums\BooleanOperator.cs" />
+    <Compile Include="Enums\SortDirection.cs" />
+    <Compile Include="FilterScaffolding\FilterScaffoldModel.cs" />
+    <Compile Include="FilterScaffolding\FilterScaffolder.cs" />
+    <Compile Include="FilterScaffolding\LeafNodeExtensions.cs" />
+    <Compile Include="FilterScaffolding\ScaffoldModelExtensions.cs" />
+    <Compile Include="Enums\DropdownValueDataType.cs" />
+    <Compile Include="Filters\FilterLeafNode.cs" />
+    <Compile Include="ParameterProcessors\Interfaces\IQueryParameterProcessor.cs" />
+    <Compile Include="ParameterProcessors\JQueryDtParameterProcessor.cs" />
+    <Compile Include="QueryProcessObjects\QueryResult.cs" />
+    <Compile Include="QueryProcessors\Interface\IDynamicFilterBuilder.cs" />
+    <Compile Include="QueryProcessors\Interface\IQueryProcessor.cs" />
+    <Compile Include="QueryDataSources\IQueryDataSource.cs" />
+    <Compile Include="Filters\FilterNode.cs" />
+    <Compile Include="Filters\FilterRootNode.cs" />
+    <Compile Include="QueryProcessObjects\QueryParameters.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryProcessors\StringDynamicFilterBuilder.cs" />
+    <Compile Include="QueryProcessors\QueryProcessor.cs" />
+    <Compile Include="Sorting\SortNode.cs" />
+    <Compile Include="UiExtensions\Exceptions\PrefilterData\PrefilterDisplayPropertyNotFoundException.cs" />
+    <Compile Include="UiExtensions\Exceptions\PrefilterData\NonEnumerablePrefilterException.cs" />
+    <Compile Include="UiExtensions\Exceptions\PrefilterData\PrefilterMisingValueNameException.cs" />
+    <Compile Include="UiExtensions\Exceptions\PrefilterData\PrefilterValuePropertyNotFoundException.cs" />
+    <Compile Include="UiExtensions\Exceptions\PrefilterData\PrefilterMisingDisplayNameException.cs" />
+    <Compile Include="UiExtensions\MvcHtmlDynamicExtensions.cs" />
+    <Compile Include="UiExtensions\FilterHtmlGeneralBuilders.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DSS.Data.Model\DSS.Data.Model.csproj">
+      <Project>{F05280DA-FF8D-4016-96FD-39235831350F}</Project>
+      <Name>DSS.Data.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

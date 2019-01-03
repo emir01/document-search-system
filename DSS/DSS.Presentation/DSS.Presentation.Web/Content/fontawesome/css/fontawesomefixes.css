@@ -1,0 +1,4 @@
+﻿/*Contains certain fixes for other plugins css that relied on thead standard icons from bootstrap*/
+.ui-pnotify-history-container .ui-pnotify-history-pulldown {
+    text-align: center !important;
+}

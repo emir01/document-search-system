@@ -1,0 +1,27 @@
+﻿ public Note SaveOrUpdateNote(Note note)
+        {
+            // If the guid is empty than we save a new note.
+            if (note.Id == Guid.Empty)
+            {
+                note.Id = Guid.NewGuid();
+                note = _noteContext.Notes.Add(note);
+
+                // Make sure to set the board as exsisting and not try to craete a new board
+                _noteContext.Boards.Attach(note.Board);
+                _noteContext.Entry(note.Board).State = EntityState.Unchanged;
+            }
+            else
+            {
+                // if the passed in note alreasy has a guid it has been created before
+                // so we atach it as state modified.
+                _noteContext.Notes.Attach(note);
+                _noteContext.Entry(note).State = EntityState.Modified;
+
+                // Make sure to set the board as exsisting and not try to craete a new board
+                _noteContext.Boards.Attach(note.Board);
+                _noteContext.Entry(note.Board).State = EntityState.Unchanged;
+            }
+
+            _noteContext.SaveChanges();
+            return note;
+        }

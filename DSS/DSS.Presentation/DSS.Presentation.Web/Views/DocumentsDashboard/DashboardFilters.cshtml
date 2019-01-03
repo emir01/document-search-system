@@ -1,0 +1,27 @@
+﻿@using DSS.Data.Query.UiExtensions
+@model DSS.Data.Query.FilterScaffolding.FilterScaffoldModel<DSS.Data.Model.Entities.Document>
+
+<div id="document-dashboard-filter" class="row-fluid filter-forms">
+    
+    <div class="span4">
+        <div class="form-inline">
+            <label>Indexed status: </label>
+            @(MvcHtmlDynamicExtensions.DynamicFilterElement(Model, "DocumentStatus", false, "input-medium"))
+        </div>
+    </div>
+    
+    <div class="span4">
+        <div class="form-inline">
+            <label>Document title: </label>
+            @(MvcHtmlDynamicExtensions.DynamicFilterElement(Model, "DocumentTitle", false, "input-medium"))
+        </div>
+    </div>
+
+    <div class="span4">
+        <div class="form-inline">
+            <label>Author Name: </label>
+            @(MvcHtmlDynamicExtensions.DynamicFilterElement(Model, "AuthorName", false, "input-medium"))
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+@section header
+{
+    @* Templates:  *@
+    @*================================================================================*@
+
+    @Html.Partial("Partials/_SearchDocumentTemplate")
+
+}
+
+<div id="documents-panel">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="page-header">
+                <h1>Search <small>Search documents using specific criteria</small></h1>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            @Html.Partial("Partials/_SearchFilters")
+
+            @Html.Partial("Partials/_SearchResults")
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+
+            DSS.layout.SetMenuItemActive("Link_Search");
+
+            // Get the document serach view model and apply it to the documents panel
+            // Call init on the view model
+            var documentSearchViewModel = DSS.Ko.ViewModels.Action.DocumentSearchViewModel;
+            ko.applyBindings(documentSearchViewModel, document.getElementById("documents-panel"));
+            documentSearchViewModel.init();
+        });
+    </script>
+}

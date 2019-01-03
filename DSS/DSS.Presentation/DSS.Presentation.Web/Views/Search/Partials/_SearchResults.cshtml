@@ -1,0 +1,17 @@
+﻿
+<div class="span8">
+
+    @*Stats and paging row*@
+    <div class="row-fluid">Found Documents: <span data-bind="text: documents().length"></span> </div>
+
+    @*Actual rendered results row*@
+    <div class="row-fluid">
+        <!-- ko if: noMatchingDocuments()  -->
+        <h3>No matching documents!</h3>
+        <!-- /ko -->
+
+        <div id="document-list" class="clearfix" data-bind="template: { name: 'documentTemplate', foreach: documents }">
+        </div>
+    </div>
+
+</div>

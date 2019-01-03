@@ -1,0 +1,59 @@
+﻿@model DSS.Common.ViewModels.Documents.DocumentsUploadResultsViewModel
+
+<div class="container" id="file-upload-results-container">
+
+    <div class="row">
+        <div class="page-header">
+            <h1>File Upload Results <small>Document upload result statistics</small></h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <a href="@Url.Action("Index")" class="btn btn-primary inl">
+            <i class="icon-plus-sign icon-white"></i>
+            Add More Documents!
+        </a>
+    </div>
+
+    <div class="row">
+        <h3 class="results-header text-success" id="results-total-success">Successfully saved documents : @Html.DisplayFor(x => x.StoredDocumentsCount)
+        </h3>
+
+        <div class="doc-result-list">
+            @foreach (var stored in Model.StoredDocuments)
+            {
+                <blockquote>
+                    <p><strong>Document Title:</strong> @stored.DocumentSavedTitle</p>
+                    <small><strong>Document Path:</strong> @stored.DocumentFilePath</small>
+                </blockquote>
+            }
+        </div>
+
+    </div>
+
+    <div class="row">
+        <h3 class="results-header results-warning">Document tiltes for document info without files:</h3>
+
+        <ul class="doc-result-list">
+            @foreach (var orphanedViewModelTitle in Model.OrphanedDocumentObjectTitles)
+            {
+                <li>@orphanedViewModelTitle</li>            
+            }
+        </ul>
+
+    </div>
+
+    <div class="row">
+        <h3 class="results-header results-warning">Uploaded file names without document information:</h3>
+
+        <ul class="doc-result-list">
+            @foreach (var orphanedFileName in Model.OrphanedUploadedFileNames)
+            {
+                <li>@orphanedFileName</li>    
+            }
+        </ul>
+
+    </div>
+
+</div>
+

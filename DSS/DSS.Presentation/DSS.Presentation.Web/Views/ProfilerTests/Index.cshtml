@@ -1,0 +1,17 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "Profiler Tests";
+}
+    
+<h2>Profiling</h2>
+
+
+<p>
+    <ul>
+        @foreach (var doc in Model)
+        {
+            <li>doc</li>
+        }
+    </ul>
+</p>

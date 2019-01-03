@@ -1,0 +1,29 @@
+﻿@model DSS.Common.ViewModels.User.UserLoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="container">
+    
+    @using (Html.BeginForm("Login", "Account", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "form-login" }))
+    {
+        <h2>Enter login information</h2>
+
+        @Html.TextBoxFor(x => x.Username, new { title = "Username", @class = "input-block-level", placeholder = "Enter Username" })
+
+        @Html.PasswordFor(x => x.Password, new { title = "Password", @class = "input-block-level", placeholder = "Enter Password" })
+
+        <label for="RememberMe" class="control-label">
+            @Html.CheckBoxFor(x => x.RememberMe)
+            Remember Me
+        </label>
+
+        <input type="submit" class="btn btn-large btn-primary" value="Login" />
+        
+        <div class="login-validation-errors">
+            @Html.ValidationSummary(false)
+        </div>
+    }
+</div>
+
